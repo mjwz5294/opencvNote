@@ -1,0 +1,57 @@
+教程网址：http://code.ziqiangxuetang.com/python/pip-virtualenv-fabric.html
+
+一、基础语法不多说了，后面补充
+
+二、pip：
+# 安装，可指定版本号
+(sudo) pip install Django==1.6.8
+# 升级
+(sudo) pip install bpython --upgrade
+# 一次安装多个
+(sudo) pip install BeautifulSoup4 fabric virtualenv
+# 从文本中安装，文本中为包名，一行一个，可以指定版本号
+(sudo) pip install –r requirements.txt
+# 删除
+(sudo) pip uninstall xlrd
+# 导出当前已经安装包
+pip freeze > requirements.txt
+
+三、virtualenv：
+1、参考教程：https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000
+2、我们通过virtualenv可以创建一个干净的，不带任何第三方包的python运行环境。进入此环境后，python和pip命令均指向当前的virtualenv环境
+3、一般来将，我们会为一个项目创建一个python运行环境，只安装它需要的包。然后在该环境中进行项目开发。
+
+四、virtualenvwrapper 使得virtualenv变得更好用。一般我们有了virtualenvwrapper就不会再直接使用virtualenv命令了。
+1、安装配置：http://virtualenvwrapper.readthedocs.io/en/latest/install.html#basic-installation
+2、基本命令：
+（1）mkvirtualenv ENV：创建运行环境ENV
+（2）rmvirtualenv ENV：删除运行环境ENV
+（3）mkproject mic：创建mic项目和运行环境mic
+（4）mktmpenv：创建临时运行环境
+（5）workon bsp: 工作在bsp运行环境
+（6）lsvirtualenv: 列出可用的运行环境
+（7）lssitepackages: 列出当前环境安装了的包
+（8）deactivate：退出虚拟环境
+（9）virtualenvwrapper --help：最重要的命令
+
+
+五、pyevn：可以帮助你在一台开发机上建立多个版本的python环境， 并提供方便的切换方法。配合virtualenv，就可以实现‘建立多个虚拟环境， 每个环境里面的python版本可以是不同的， 也可以是相同的， 而且环境之间相互独立。’的目的。
+1、安装配置：http://www.cnblogs.com/npumenglei/p/3719412.html，不过pyenv安装python时太慢，可能需要考虑一种新方案。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
