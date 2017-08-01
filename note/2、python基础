@@ -33,10 +33,12 @@ pip freeze > requirements.txt
 （7）lssitepackages: 列出当前环境安装了的包
 （8）deactivate：退出虚拟环境
 （9）virtualenvwrapper --help：最重要的命令
+（10）virtualenv -p /usr/bin/python3.3 env3.3：创建指定版本的环境
 
 
 五、pyevn：可以帮助你在一台开发机上建立多个版本的python环境， 并提供方便的切换方法。配合virtualenv，就可以实现‘建立多个虚拟环境， 每个环境里面的python版本可以是不同的， 也可以是相同的， 而且环境之间相互独立。’的目的。
 1、安装配置：http://www.cnblogs.com/npumenglei/p/3719412.html，不过pyenv安装python时太慢，可能需要考虑一种新方案。
+2、新方案：http://blog.csdn.net/luckytanggu/article/details/51592091
 
 
 
