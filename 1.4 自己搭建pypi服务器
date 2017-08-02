@@ -1,0 +1,37 @@
+参考网址：https://my.oschina.net/hunter007/blog/267333
+
+一、大方向：
+1、开一个python虚拟环境vir1，在里面存放whl文件;
+2、在vir1中开一个pypiserver服务，将whl公开;
+3、其他vir或其它主机可以通过pypiserver公开的地址安装python模块。
+
+二、安装配置pypiserver：
+1、开启一个虚拟环境作为容器：mkvirtualenv py2pkgserver，用于存放python2.7的模块
+2、安装pypiserver：pip install pypiserver
+3、配置pypiserver：
+（1）创建~/.pip/pip.conf文件（pypiserver会默认访问这个文件的配置）
+（2）在pip.conf中写入   [global] index-url = http://127.0.0.1:7001/simple/，开启服务后其它设备通过http://主机IP:7001/simple/来访问资源；
+（3）创建~/packages目录，其它用户访问的就是这个目录，所以我们的资源也要放到这个目录；
+
+三、启动服务：
+1、准备资源：进入~/packages目录，执行pip install -d . XXX命令下载XXX模块的whl文件，该命令只会下载，不会安装，且能保留whl文件。
+2、启动服务：pypi-server -p <port> python_dir
+（1）这里<port>换成之前配置的端口；
+（2）python_dir是自定义的目录，更改很方便。不跟这个参数的话，就默认公开packages目录。
+
+四、通过pypiserver安装python模块
+pip install -i http://主机IP:7001/simple/ XXX
+
+
+
+
+
+
+
+
+
+
+
+
+
+

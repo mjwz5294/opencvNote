@@ -10,28 +10,15 @@
 
 二、用前面下载好的source编译opencv
 1、解压文件，进入opencv3.2,创建一个build文件夹，进入文件夹，准备进行编译。
-2、编译配置：Run cmake [<some optional parameters>] <path to the OpenCV source directory>，这个部分拿不准，需要研究下文档。细看之后，发现官网文档关于配置的部分，还是做了比较详细的说明。需要注意的是，opencv_contrib要事先下完。下面尝试编辑一下cmake命令：
+2、编译配置：Run cmake [<some optional parameters>] <path to the OpenCV source directory>，这个部分拿不准，需要研究下文档。细看之后，发现官网文档关于配置的部分，还是做了比较详细的说明。
+（1）需要注意的是，opencv_contrib要事先下完。
+（2）最简单的编译配置：
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/home/longgege/gitspace/opencv_contrib/modules -D INSTALL_PYTHON_EXAMPLES=ON -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/opencvpy/bin/python ..
+（3）下面尝试编辑一下比较全面的：
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/home/longgege/gitspace/opencv_contrib/modules -D BUILD_DOCS=ON -D BUILD_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D WITH_GSTREAMER=ON -D WITH_JPEG=ON -D WITH_GTK=ON -D WITH_PNG=ON -D WITH_FFMPEG=ON -D WITH_V4L=ON -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/opencvpy/bin/python ..
 至于其他可选配置，就不用全部填写了。
 另外，这里也不用太紧张，编译出问题，可以修改后再编译。将来想改配置了，随时也可以改。
 3、
-
-
-
-$ cd ~/opencv-3.1.0/
-$ mkdir build
-$ cd build
-$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
-    -D CMAKE_INSTALL_PREFIX=/usr/local \
-    -D INSTALL_PYTHON_EXAMPLES=ON \
-    -D INSTALL_C_EXAMPLES=OFF \
-    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.1.0/modules \
-    -D PYTHON_EXECUTABLE=~/.virtualenvs/cv[2/3]/bin/python \  # 使用cv2或cv3替换cv[2/3]
-    -D BUILD_EXAMPLES=ON ..  # 我在编译例子时遇到错误，把它改为OFF通过
-编译：
-
-
-$ make
 
 
 
