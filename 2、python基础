@@ -41,6 +41,13 @@ pip freeze > requirements.txt
 2、新方案：http://blog.csdn.net/luckytanggu/article/details/51592091
 
 
+六、几个流行的库：
+1、NumPy：用来存储和处理大型矩阵，比Python自身的嵌套列表（nested list structure)结构要高效的多。
+2、Pandas：基于NumPy 的一种工具，该工具是为了解决数据分析任务而创建的，是最具有统计意味的工具包。
+3、Matplotlib：Python中最著名的绘图系统，很多其他的绘图例如seaborn（针对pandas绘图而来）也是由其封装而成。使用较麻烦。
+4、Scipy：方便、易于使用、专为科学和工程设计的Python工具包.它包括统计,优化,整合,线性代数模块,傅里叶变换,信号和图像处理,常微分方程求解器等等。基本可以代替Matlab，但是使用的话和数据处理的关系不大，数学系，或者工程系相对用的多一些。
+
+
 
 
 

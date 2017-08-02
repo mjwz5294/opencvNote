@@ -1,10 +1,15 @@
-1、首先python使用2.7版本，opencv使用opencv3.2。
+1、根据教程：python使用2.7版本，opencv使用opencv3.2。
 2、sublime是基本工具，
 （1）安裝方法：http://www.cnblogs.com/yi220284/p/6367098.html
 （2）安裝package control：http://blog.csdn.net/kongguyoulan523/article/details/51144254
 3、sublime只是编码工具,将其当做日至编辑器的尝试,就不要做了,老老实实用gedit.
 4.Ubuntu中的截图方法:http://os.51cto.com/art/200903/113091_all.htm
-5.学会使用apt和pip.
+5.学会使用apt和pip：
+（1）pip独立成文，
+（2）apt见：http://wiki.ubuntu.org.cn/index.php?title=UbuntuHelp:AptGet/Howto/zh&redirect=no
+（3）curl也是个好工具：http://www.ruanyifeng.com/blog/2011/09/curl.html
+6、资料：
+（1）OpenCV+3计算机视觉++Python语言实现.pdf
 
 
 
