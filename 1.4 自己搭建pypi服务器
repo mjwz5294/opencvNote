@@ -20,7 +20,13 @@
 （2）python_dir是自定义的目录，更改很方便。不跟这个参数的话，就默认公开packages目录。
 
 四、通过pypiserver安装python模块
-pip install -i http://主机IP:7001/simple/ XXX
+1、安装单个模块：pip install -i http://主机IP:7001/simple/ XXX，（http不可以省略）
+2、利用吧目录文件安装：
+（1）生成包目录：pip freeze > requirements.txt
+（2）从官网安装目录中的模块：pip install -r requirements.txt
+（3）从自建的服务器安装：pip install -i http://127.0.0.1:7001/ -r requirements.txt
+
+五、可持续发展：将一些比较大的模块的whl文件备份一下
 
 
 

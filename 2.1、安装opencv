@@ -18,11 +18,18 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_E
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/home/longgege/gitspace/opencv_contrib/modules -D BUILD_DOCS=ON -D BUILD_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D WITH_GSTREAMER=ON -D WITH_JPEG=ON -D WITH_GTK=ON -D WITH_PNG=ON -D WITH_FFMPEG=ON -D WITH_V4L=ON -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/opencvpy/bin/python ..
 至于其他可选配置，就不用全部填写了。
 另外，这里也不用太紧张，编译出问题，可以修改后再编译。将来想改配置了，随时也可以改。
-3、
+3、安装过程中出现的问题：
+（1）下载ippicv时卡住，然后手动下载：https://github.com/opencv/opencv_3rdparty/blob/ippicv/master_20151201/ippicv/ippicv_linux_20151201.tgz，下载了好久
+（2）
 
 
 
-
+三、建议配置的Python模块：
+1、常用的numpy、scipy就不说了
+2、openni：https://baike.baidu.com/item/OpenNI，OpenNI的主要目的是要形成一个标准的API，来搭建视觉和音频传感器与视觉和音频感知中间件通信的桥梁。有一本图书叫《OpenNI体感应用开发实战》，大概可以看出它的应用领域；
+3、sensorkinect：是一个openni模块。Basically, OpenNI and NITE are middleware and SensorKinect is the hardware driver。说道这里，还有一个比较流行的词汇kinect，有必要了解一下。
+（1）关于openni和sensorkinect的文章：https://berlianagusta.wordpress.com/2014/06/19/working-with-kinect-installing-openni-sensorkinect-drivers/
+（2）kinect：https://zh.wikipedia.org/wiki/Kinect，一台硬件设备。
 
 
 
