@@ -48,7 +48,7 @@ make -j7 doxygen
 （1）make
 （2）sudo make install
 7、现在安装已经成功了，但还不能在python中导入cv2
-（1）cd ~/.virtualPythonEnvs/cv3.2/lib/python2.7/site-packages
+（1）cd ~/.virpythonspace/opencvvir/lib/python2.7/site-packages
 （2）ln -s /usr/local/lib/python2.7/site-packages/cv2.so cv2.so
 
 
@@ -72,7 +72,20 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D INSTALL_PYTHON_EXAMPLES=ON \
     -D INSTALL_C_EXAMPLES=OFF \
     -D OPENCV_EXTRA_MODULES_PATH=~/gitspace/opencv_contrib-3.2.0/modules \
-    -D PYTHON_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python \
+    -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python \
+    -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+    -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python2.7 \
+    -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so ..
+
+
+
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D INSTALL_C_EXAMPLES=OFF \
+    -D PYTHON2_EXECUTABLE=~/.virpythonspace/opencvvir/bin/python \
+    -D OPENCV_EXTRA_MODULES_PATH=~/virpythonworkspace/opencvvir/opencv_contrib-3.2.0/modules \
     -D BUILD_EXAMPLES=OFF ..
 
 
