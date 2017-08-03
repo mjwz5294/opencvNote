@@ -72,7 +72,19 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D INSTALL_PYTHON_EXAMPLES=ON \
     -D INSTALL_C_EXAMPLES=OFF \
     -D OPENCV_EXTRA_MODULES_PATH=~/gitspace/opencv_contrib-3.2.0/modules \
-    -D PYTHON_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python \
+    -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python \
+    -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+    -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python2.7 \
+    -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so ..
+
+
+
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D INSTALL_C_EXAMPLES=OFF \
+    -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python \
     -D BUILD_EXAMPLES=OFF ..
 
 
