@@ -1,26 +1,56 @@
-官网：http://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html
-适合python的:http://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html
+零、资源
+1、官网：http://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html
+2、适合python的:http://blog.topspeedsnail.com/archives/4755
+3、版本不匹配：http://withr.me/install-opencv-on-ubuntu-16/
+4、opencv_contrib资源库：https://github.com/opencv/opencv_contrib/releases
+5、也可以参考：http://nooverfit.com/wp/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%EF%BC%8C%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85opencv-3-0-%E5%92%8C-python-2-7/
+6、中间有很多资源下载不通过，这里放上：http://blog.csdn.net/u013832707/article/details/73614798
+7、上一步中有的资源不齐，比如vgg_generated那一堆东西，我在https://github.com/cbalint13/opencv-dlco/tree/master/workspace/opencv找到，所以上一步的资源我都有了。
+https://github.com/opencv/opencv_3rdparty/tree/ippicv/master_20170418/ippicv
+8、中间下载卡住的资源，我都放到package里面去了，能正常下载的，我就没管了。
+
+
 一、事先准备好的东西：
 1、sudo apt-get install build-essential
 2、sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 3、sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
 4、下载opencv源码，里面有很多例子可供参考：git clone https://github.com/opencv/opencv.git
-5、安装文件：http://opencv.org/releases.html，ubuntu就下载source那个包，我下载的3.2版本。这个资源包里面的东西其实就是4中下载的源码，只不过它是一个稳定的版本。
-6、opencv_contrib里面有很多重要的模块，也需要克隆：git clone https://github.com/opencv/opencv_contrib.git
+5、安装文件：http://opencv.org/releases.html，ubuntu就下载source那个包，我下载的3.2.0版本。这个资源包里面的东西其实就是4中下载的源码，只不过它是一个稳定的版本。
+6、opencv_contrib里面有很多重要的模块，也需要克隆：git clone https://github.com/opencv/opencv_contrib.git。后面发现不能这样下载，这样搞会导致与opencv的版本不一致，进而导致编译不成功。比如前面opencv下载的是3.2.0版本，这里一定要找到3.2.0版本，否则白搞。opencv_contrib的资源包放在文章顶部，直接去网页下载就行
 
 二、用前面下载好的source编译opencv
 1、解压文件，进入opencv3.2,创建一个build文件夹，进入文件夹，准备进行编译。
 2、编译配置：Run cmake [<some optional parameters>] <path to the OpenCV source directory>，这个部分拿不准，需要研究下文档。细看之后，发现官网文档关于配置的部分，还是做了比较详细的说明。
 （1）需要注意的是，opencv_contrib要事先下完。
 （2）最简单的编译配置：
-cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/home/longgege/gitspace/opencv_contrib/modules -D INSTALL_PYTHON_EXAMPLES=ON -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/opencvpy/bin/python ..
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=~/gitspace/opencv_contrib/modules -D INSTALL_PYTHON_EXAMPLES=ON -D PYTHON_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python -D INSTALL_C_EXAMPLES=OFF -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so ..
 （3）下面尝试编辑一下比较全面的：
-cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/home/longgege/gitspace/opencv_contrib/modules -D BUILD_DOCS=ON -D BUILD_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D WITH_GSTREAMER=ON -D WITH_JPEG=ON -D WITH_GTK=ON -D WITH_PNG=ON -D WITH_FFMPEG=ON -D WITH_V4L=ON -D PYTHON2_EXECUTABLE=~/.virtualPythonEnvs/opencvpy/bin/python ..
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=~/gitspace/opencv_contrib-3.2.0/modules -D BUILD_DOCS=ON -D BUILD_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D WITH_GSTREAMER=ON -D WITH_JPEG=ON -D WITH_GTK=ON -D WITH_PNG=ON -D WITH_FFMPEG=ON -D WITH_V4L=ON -D PYTHON_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python ..
 至于其他可选配置，就不用全部填写了。
 另外，这里也不用太紧张，编译出问题，可以修改后再编译。将来想改配置了，随时也可以改。
 3、安装过程中出现的问题：
 （1）下载ippicv时卡住，然后手动下载：https://github.com/opencv/opencv_3rdparty/blob/ippicv/master_20151201/ippicv/ippicv_linux_20151201.tgz，下载了好久
-（2）
+（2）/home/longgege/gitspace/opencv_contrib/modules/dnn_modern/CMakeLists.txt:20 (ocv_download):找到的说法是，opencv_contrib版本与opencv3.2不一致。后来更换了3.2.0的opencv_contrib，解决了这里的问题。
+（3）下载protobuf-cpp-3.1.0.tar.gz卡住：protobuf-cpp-3.1.0.tar.gz should be under ../opencv_contrib/modules/dnn/.downloads/bd5e3eed635a8d32e2b99658633815ef/。意思就是先下载好protobuf-cpp-3.1.0.tar.gz，然后放到相应目录。
+（4）下载vgg_generated的一系列东西卡住：在https://github.com/cbalint13/opencv-dlco/tree/master/workspace/opencv找到了一套资源。至此，后面的东西都能正常下载了。
+（5）终于看到了成功的结果：
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/longgege/software/opencv-3.2.0/build
+总之，很多时候会遇到资源下载失败的情况。解决的办法就是，先下载好，然后放到合适的位置去。
+4、编译：make -j7 # runs 7 jobs in parallel，上一步配置成功的话，这一步一般没问题。
+5、创建文档：
+cd ~/opencv/build/doc/
+make -j7 doxygen
+（1）出现问题：No rule to make target 'doxygen'。需要安装doxygen：http://www.stack.nl/~dimitri/doxygen/manual/install.html
+（2）最终放弃了文档安装
+6、安装：
+（1）make
+（2）sudo make install
+7、现在安装已经成功了，但还不能在python中导入cv2
+（1）cd ~/.virtualPythonEnvs/cv3.2/lib/python2.7/site-packages
+（2）ln -s /usr/local/lib/python2.7/site-packages/cv2.so cv2.so
+
 
 
 
@@ -30,9 +60,46 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_E
 3、sensorkinect：是一个openni模块。Basically, OpenNI and NITE are middleware and SensorKinect is the hardware driver。说道这里，还有一个比较流行的词汇kinect，有必要了解一下。
 （1）关于openni和sensorkinect的文章：https://berlianagusta.wordpress.com/2014/06/19/working-with-kinect-installing-openni-sensorkinect-drivers/
 （2）kinect：https://zh.wikipedia.org/wiki/Kinect，一台硬件设备。
+（3）总之，这里就不安装sensorkinect了，相关的例子也不用跑了。
 
 
 
+
+
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D INSTALL_C_EXAMPLES=OFF \
+    -D OPENCV_EXTRA_MODULES_PATH=~/gitspace/opencv_contrib-3.2.0/modules \
+    -D PYTHON_EXECUTABLE=~/.virtualPythonEnvs/cv3.2/bin/python \
+    -D BUILD_EXAMPLES=OFF ..
+
+
+
+
+
+
+
+
+
+
+
+ImportError: No module named 'numpy'
+No package 'gstreamer-base-1.0' found
+No package 'gstreamer-video-1.0' found
+No package 'gstreamer-app-1.0' found
+No package 'gstreamer-riff-1.0' found
+No package 'gstreamer-pbutils-1.0' found
+No package 'gstreamer-base-0.10' found
+No package 'gstreamer-video-0.10' found
+No package 'gstreamer-app-0.10' found
+No package 'gstreamer-riff-0.10' found
+No package 'gstreamer-pbutils-0.10' found
+No package 'libavresample' found
+No package 'libgphoto2' found
+
+IPPICV: Download: ippicv_2017u2_lnx_intel64_20170418.tgz
 
 
 
