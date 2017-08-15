@@ -9,7 +9,7 @@ img[0,0]=[255,255,255] 		#numpy 提供的功能，普通python数组不能这么
 print img.item(50,20,0)
 img.itemset((50,20,0),255)	#将坐标（52,20）的当前B通道的值设为255.注意，其中B-0，G-1,R-2
 print img.item(50,20,0)
-img[:,:,0] = 0			#操作整个G通道，将其值设为0
+img[:,:,1] = 0			#操作整个G通道，将其值设为0
 cv2.imwrite('source/test.png',img)
 print img.shape 		#宽、高、通道数
 print img.size			#像素大小
